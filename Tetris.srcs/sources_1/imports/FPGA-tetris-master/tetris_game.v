@@ -242,48 +242,48 @@ game_process_module U15
 
 /**************************************************/
 
-pic_over_module U16
-(
- .clka(clk_25MHz),
- .addra(pic_addr),
- .douta(pic_over_data)
-); 
+// pic_over_module U16
+// (
+//  .clka(clk_25MHz),
+//  .addra(pic_addr),
+//  .douta(pic_over_data)
+// ); 
  
-/**************************************************/ 
+// /**************************************************/ 
 
-pic_next_module U17
-(
- .clka(clk_25MHz),
- .addra(pic_addr),
- .douta(pic_next_data)
-); 
+// pic_next_module U17
+// (
+//  .clka(clk_25MHz),
+//  .addra(pic_addr),
+//  .douta(pic_next_data)
+// ); 
 
-/**************************************************/ 
+// /**************************************************/ 
 
-pic_hold_module U18
-(
- .clka(clk_25MHz),
- .addra(pic_addr),
- .douta(pic_hold_data)
-); 
+// pic_hold_module U18
+// (
+//  .clka(clk_25MHz),
+//  .addra(pic_addr),
+//  .douta(pic_hold_data)
+// ); 
 
-/**************************************************/
+// /**************************************************/
 
-pic_score_module U19
-(
- .clka(clk_25MHz),
- .addra(pic_addr),
- .douta(pic_score_data)
-); 
+// pic_score_module U19
+// (
+//  .clka(clk_25MHz),
+//  .addra(pic_addr),
+//  .douta(pic_score_data)
+// ); 
 
-/**************************************************/
+// /**************************************************/
 
-pic_num_module U20
-(
- .clka(clk_25MHz),
- .addra(pic_num_addr),
- .douta(pic_num_data)
-); 
+// pic_num_module U20
+// (
+//  .clka(clk_25MHz),
+//  .addra(pic_num_addr),
+//  .douta(pic_num_data)
+// ); 
 
 /**************************************************/
 

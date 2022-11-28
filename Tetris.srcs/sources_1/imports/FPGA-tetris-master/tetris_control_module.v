@@ -9,64 +9,64 @@ input move_right;
 input move_left;
 input rotate_r;
 input change;
-input ingame_sig;
-output [10:0] moving_square_h;
-output [10:0] moving_square_v;
-output [15:0] moving_square;
-output [15:0] hold_square;
-output [299:0] fixed_square_map;
-output load_next_square;
-output [7:0] cur_score_bin;
-output game_over;
+input ingame_sig;               //正在游戏信号
+output [10:0] moving_square_h;  //移动方块的水平位置
+output [10:0] moving_square_v;  //移动方块的垂直位置
+output [15:0] moving_square;   //移动方块的形状
+output [15:0] hold_square;   //hold方块的形状
+output [299:0] fixed_square_map; //固定方块的地图
+output load_next_square;  //加载下一个方块
+output [7:0] cur_score_bin; //当前分数
+output game_over; //游戏结束信号
 
 /**************************************************/
 
-parameter T1S = 26'd24_999_999;  
+parameter T1S = 26'd24_999_999;   //1s的计数值
 
 /**************************************************/
 
-reg [10:0] moving_square_h_r;
-reg [10:0] moving_square_v_r;
-reg [15:0] moving_square_r;
-reg [8:0] moving_square_loc;
-reg [15:0] hold_square_r;
-reg [299:0] fixed_square_map_r;
-wire move_down_en;
-wire move_right_en;
-wire move_left_en;
-wire rotate_en;
-wire change_en;
-wire fall_down; 
-reg [15:0] rotate_test;
-reg [25:0] count_down;
-wire [13:0] sub_line;
-wire sub_line_total;
-reg [2:0] next_square_type;
-reg rotate_r_dly;
-reg fall_down_dly;
-reg change_dly;
-reg load_next_square_r;
-reg game_over_r;
-wire [15:0] move_down_en_w;
-wire [15:0] move_right_en_w;
-wire [15:0] move_left_en_w;
-wire [15:0] rotate_en_w;
-wire [15:0] change_en_w;
-reg [7:0] cur_sub_line;
+reg [10:0] moving_square_h_r;   //移动方块的水平位置
+reg [10:0] moving_square_v_r;   //移动方块的垂直位置
+reg [15:0] moving_square_r;     //移动方块的形状
+reg [8:0] moving_square_loc;    //移动方块的位置
+reg [15:0] hold_square_r;        //hold方块的形状
+reg [299:0] fixed_square_map_r;   //固定方块的地图
+wire move_down_en;           //下移使能
+wire move_right_en;         //右移使能
+wire move_left_en;        //左移使能
+wire rotate_en;          //旋转使能
+wire change_en;        //hold使能
+wire fall_down;         //下落使能
+reg [15:0] rotate_test; //旋转测试
+reg [25:0] count_down;  //计数器
+wire [13:0] sub_line;   //消行
+wire sub_line_total;    //消行总数
+reg [2:0] next_square_type; //下一个方块的类型
+reg rotate_r_dly; //旋转信号延时
+reg fall_down_dly;  //下落信号延时
+reg change_dly; //hold信号延时
+reg load_next_square_r; //加载下一个方块
+reg game_over_r;  //游戏结束信号
+wire [15:0] move_down_en_w; //下移使能
+wire [15:0] move_right_en_w;  //右移使能
+wire [15:0] move_left_en_w;   //左移使能
+wire [15:0] rotate_en_w;  //旋转使能
+wire [15:0] change_en_w;  //hold使能
+reg [7:0] cur_sub_line; //当前消行数
 
 /**************************************************/
-//控制1s下落一?
+//控制1s下落一? 
 always @ ( posedge clk or negedge rst_n )
   begin 
     if( !rst_n )
-      count_down <= 26'd0;
+      count_down <= 26'd0;  
     else if( count_down == T1S )
-      count_down <= 26'd0;
+      count_down <= 26'd0;  
     else if( ingame_sig )
       count_down <= count_down + 1'b1;
   end
 
-assign fall_down = ( count_down == T1S ) && ( move_down_en );
+assign fall_down = ( count_down == T1S ) && ( move_down_en ); //下落使能
 
 /**************************************************/ 
 //判断下落的方块是否能下移
@@ -74,12 +74,12 @@ assign fall_down = ( count_down == T1S ) && ( move_down_en );
 generate
   genvar i;
   for(i = 0; i <= 15; i = i + 1)
-    begin: iloop
+    begin: iloop  //循环生成16个判断下落方块是否能下移的模块
       assign move_down_en_w[i] = moving_square_r[i] && fixed_square_map_r[moving_square_loc + i % 4 + i / 4 * 20 + 20];
     end
 endgenerate
 
-assign move_down_en = ~ (| move_down_en_w);
+assign move_down_en = ~ (| move_down_en_w); //下移使能
 
 /**************************************************/ 
 //判断下落的方块是否能右移
@@ -92,7 +92,7 @@ generate
     end
 endgenerate
 
-assign move_right_en = ~(| move_right_en_w);
+assign move_right_en = ~(| move_right_en_w);  //右移使能
 
 /**************************************************/
 //判断下落的方块是否能左移
@@ -105,7 +105,7 @@ generate
     end
 endgenerate
 
-assign move_left_en = ~(| move_left_en_w);
+assign move_left_en = ~(| move_left_en_w);  //左移使能
 
 /**************************************************/
 //判断下落的方块是否能和存储区的方块互?
@@ -118,7 +118,7 @@ generate
     end
 endgenerate
 
-assign change_en = ~(| change_en_w);
+assign change_en = ~(| change_en_w);  //hold使能
 
 /**************************************************/
 //判断下落的方块是否能向右旋转
@@ -126,15 +126,15 @@ assign change_en = ~(| change_en_w);
 always @ ( posedge clk or negedge rst_n )
   begin
     if( !rst_n )
-      rotate_test <= 16'b0000_0111_0010_0000;
-    else if( rotate_r == 1'b1 )
+      rotate_test <= 16'b0000_0111_0010_0000; //旋转测试
+    else if( rotate_r == 1'b1 ) //向右旋转
       begin
-        rotate_test[0] <= rotate_test[12];
+        rotate_test[0] <= rotate_test[12];  
         rotate_test[1] <= rotate_test[8];
         rotate_test[2] <= rotate_test[4];
         rotate_test[3] <= rotate_test[0];
         rotate_test[4] <= rotate_test[13];
-        rotate_test[5] <= rotate_test[9];
+        rotate_test[5] <= rotate_test[9];   
         rotate_test[6] <= rotate_test[5];
         rotate_test[7] <= rotate_test[1];
         rotate_test[8] <= rotate_test[14];
@@ -145,36 +145,36 @@ always @ ( posedge clk or negedge rst_n )
         rotate_test[13] <= rotate_test[11];
         rotate_test[14] <= rotate_test[7];
         rotate_test[15] <= rotate_test[3];
-      end
-  end
+      end 
+  end 
 
 generate
   genvar y;
   for(y = 0; y <= 15; y = y + 1)
-    begin: yloop
+    begin: yloop  
       assign rotate_en_w[y] = rotate_test[y] && fixed_square_map_r[moving_square_loc + y % 4 + y / 4 * 20];
     end
 endgenerate
 
-assign rotate_en = ~(| rotate_en_w);
+assign rotate_en = ~(| rotate_en_w);  //旋转使能
 
 /**************************************************/
 //判断是否发生成功碰撞
 
 always @ ( posedge clk or negedge rst_n )
   begin
-    if( !rst_n )
-       fall_down_dly <= 1'b0;
+    if( !rst_n )  
+       fall_down_dly <= 1'b0; 
     else 
-       fall_down_dly <= fall_down;
+       fall_down_dly <= fall_down;    
   end
   
 always @ ( posedge clk or negedge rst_n )
   begin
     if( !rst_n )
-       load_next_square_r <= 1'b0;
+       load_next_square_r <= 1'b0;  
     else 
-       load_next_square_r <= fall_down_dly && ( ~move_down_en );
+       load_next_square_r <= fall_down_dly && ( ~move_down_en );  //下落使能为0，即下落方块不能下移，发生碰撞
   end
 
 /**************************************************/
@@ -185,7 +185,7 @@ always @(posedge clk or negedge rst_n )
     if ( !rst_n ) 
       change_dly <= 1'b0;
     else
-      change_dly <= change;
+      change_dly <= change; 
   end
 
 always @ ( posedge clk or negedge rst_n )
@@ -193,7 +193,7 @@ always @ ( posedge clk or negedge rst_n )
     if( !rst_n )
       rotate_r_dly <= 1'b0;
     else 
-      rotate_r_dly <= rotate_r;
+      rotate_r_dly <= rotate_r; 
   end
 
 always @ ( posedge clk or negedge rst_n )
@@ -203,7 +203,7 @@ always @ ( posedge clk or negedge rst_n )
         moving_square_r <= 16'b0000_0111_0010_0000;
         hold_square_r <= 16'b0000_0110_0110_0000;
     end
-    else if( rotate_r_dly && rotate_en )
+    else if( rotate_r_dly && rotate_en )  //向右旋转
       begin 
         moving_square_r[0] <= moving_square_r[12];
         moving_square_r[1] <= moving_square_r[8];
@@ -222,12 +222,12 @@ always @ ( posedge clk or negedge rst_n )
         moving_square_r[14] <= moving_square_r[7];
         moving_square_r[15] <= moving_square_r[3];
       end
-    else if( change_dly && change_en )
+    else if( change_dly && change_en )  //交换存储区方块
       begin
         moving_square_r <= hold_square_r;
         hold_square_r <= moving_square_r;
       end
-    else if( load_next_square_r )
+    else if( load_next_square_r ) //加载新方块
       begin
         case( next_square_type )
           3'b000: moving_square_r <= 16'b0000_0111_0010_0000;
@@ -249,7 +249,7 @@ always @ ( posedge clk or negedge rst_n )
   begin 
     if( !rst_n )
       next_square_type <= 3'd0;
-    else if( load_next_square_r )
+    else if( load_next_square_r ) //加载新方块
       next_square_type <= next_square_type + 1'b1;
   end
 
@@ -259,26 +259,26 @@ always @ ( posedge clk or negedge rst_n )
 always @ ( posedge clk or negedge rst_n )
   begin 
     if( !rst_n )
-      moving_square_loc <= 9'd8;
+      moving_square_loc <= 9'd8;  //方块的初始位置
     else if( load_next_square_r )
-      moving_square_loc <= 9'd8;
-    else if( move_right && move_right_en)
+      moving_square_loc <= 9'd8;  //加载新方块
+    else if( move_right && move_right_en) //向右移动
       moving_square_loc <= moving_square_loc + 1'b1;
-    else if( move_left && move_left_en )  
+    else if( move_left && move_left_en )    //向左移动
       moving_square_loc <= moving_square_loc - 1'b1;
-    else if( fall_down )
+    else if( fall_down )  //下落
       moving_square_loc <= moving_square_loc + 9'd20;
   end                      
 
 always @ ( posedge clk or negedge rst_n )
   begin 
     if( !rst_n )
-      moving_square_h_r <= 11'd370;
+      moving_square_h_r <= 11'd370; //方块的初始位置
     else if( load_next_square_r )
-      moving_square_h_r <= 11'd370;
-    else if( move_right && move_right_en )
+      moving_square_h_r <= 11'd370; //加载新方块
+    else if( move_right && move_right_en )  //向右移动
       moving_square_h_r <= moving_square_h_r + 11'd20;
-    else if( move_left && move_left_en )
+    else if( move_left && move_left_en )  //向左移动
       moving_square_h_r <= moving_square_h_r - 11'd20;  
   end
 
@@ -293,7 +293,7 @@ always @ ( posedge clk or negedge rst_n )
   end
 
 /**************************************************/
-//检查是否有某行已满需要消�
+//检查是否有某行已满需要消�
 
 generate
   genvar p;
