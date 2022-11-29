@@ -11,9 +11,9 @@ output enable_next_square;
 
 /**************************************************/
 
-reg [2:0] square_type;  
-reg [15:0] enable_square;
-reg [15:0] enable_next_square_h;
+reg [2:0] square_type;    //方块类型
+reg [15:0] enable_square; //方块
+reg [15:0] enable_next_square_h;  
 reg [15:0] enable_next_square_v;
 reg [15:0] enable_next_square_r;
 
@@ -24,7 +24,7 @@ always @ ( posedge clk or negedge rst_n )
     if( !rst_n )
       square_type <= 3'd0;
     else if( load_next_square )
-      square_type <= square_type + 1'b1;
+      square_type <= square_type + 1'b1;   //切换为下一个
     else 
       square_type <= square_type;
   end
@@ -112,7 +112,7 @@ always @ ( posedge clk or negedge rst_n )
   
 /**************************************************/
 
-assign enable_next_square = | enable_next_square_r;   
+assign enable_next_square = | enable_next_square_r;     
 
 /**************************************************/    
                

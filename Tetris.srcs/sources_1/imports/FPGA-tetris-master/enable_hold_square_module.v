@@ -2,24 +2,24 @@ module enable_hold_square_module
 ( clk, rst_n, col_addr_sig, row_addr_sig, hold_square,
   enable_hold_square
 );
-input clk;
+input clk;  
 input rst_n;
 input [10:0] col_addr_sig;
 input [10:0] row_addr_sig;
-input [15:0] hold_square;
+input [15:0] hold_square; //hold方块
 output enable_hold_square;
 
 /**************************************************/
 
-reg [15:0] enable_hold_square_h;
-reg [15:0] enable_hold_square_v;
-reg [15:0] enable_hold_square_r;
+reg [15:0] enable_hold_square_h;  //使能hold方块的水平方向
+reg [15:0] enable_hold_square_v;  //使能hold方块的垂直方向
+reg [15:0] enable_hold_square_r;  //使能hold方块的1位
 
 /**************************************************/
 
 generate
   genvar i;
-  for( i = 0; i <= 15; i = i + 1)
+  for( i = 0; i <= 15; i = i + 1) 
     begin: iloop
       always @ ( posedge clk or negedge rst_n )
         begin
@@ -27,9 +27,9 @@ generate
             enable_hold_square_h[i] <= 1'b0;
           else if( hold_square[i] == 1'b1 )
             begin 
-              if( col_addr_sig == 11'd191 + ( i % 11'd04 ) * 20 )  
-                enable_hold_square_h[i] <= 1'b1; 
-              else if( col_addr_sig == 11'd210 + ( i % 11'd04 ) * 20 )
+              if( col_addr_sig == 11'd191 + ( i % 11'd04 ) * 20 )   //行地址 = 191 + ( i % 4 ) * 20
+                enable_hold_square_h[i] <= 1'b1;  
+              else if( col_addr_sig == 11'd210 + ( i % 11'd04 ) * 20 )  //行地址 = 210 + ( i % 4 ) * 20
                 enable_hold_square_h[i] <= 1'b0; 
               else 
                 enable_hold_square_h[i] <= enable_hold_square_h[i];
@@ -52,9 +52,9 @@ generate
             enable_hold_square_v[j] <= 1'b0;
           else if( hold_square[j] == 1'b1 )
             begin
-              if( row_addr_sig == 11'd161 + ( j / 11'd04 ) * 11'd20)
+              if( row_addr_sig == 11'd161 + ( j / 11'd04 ) * 11'd20)  //列地址 = 161 + ( j / 4 ) * 20
                 enable_hold_square_v[j] <= 1'b1;
-              else if( row_addr_sig == 11'd180 + ( j / 11'd04 ) * 11'd20 )
+              else if( row_addr_sig == 11'd180 + ( j / 11'd04 ) * 11'd20 )  //列地址 = 180 + ( j / 4 ) * 20
                 enable_hold_square_v[j] <= 1'b0; 
               else 
                 enable_hold_square_v[j] <= enable_hold_square_v[j];
@@ -72,7 +72,7 @@ always @ ( posedge clk or negedge rst_n )
     if( !rst_n )
       enable_hold_square_r <= 16'd0;
     else 
-      enable_hold_square_r <= enable_hold_square_h & enable_hold_square_v;
+      enable_hold_square_r <= enable_hold_square_h & enable_hold_square_v;  //使能hold方块
   end
   
 /**************************************************/

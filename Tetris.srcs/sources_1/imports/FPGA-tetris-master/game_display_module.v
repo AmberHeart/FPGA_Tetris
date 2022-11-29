@@ -5,7 +5,7 @@ module game_display_module
   red_out, green_out, blue_out
 );
 input clk;
-input rst_n;
+input rst_n;  
 input sync_ready_sig;
 input ingame_sig;
 input enable_border;

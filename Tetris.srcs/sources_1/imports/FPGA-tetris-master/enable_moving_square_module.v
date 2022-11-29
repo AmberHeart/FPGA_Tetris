@@ -6,14 +6,14 @@ input clk;
 input rst_n;
 input [10:0] col_addr_sig;
 input [10:0] row_addr_sig;
-input [10:0] moving_square_h;
-input [10:0] moving_square_v;
-input [15:0] moving_square;
+input [10:0] moving_square_h; //moving方块的水平方向
+input [10:0] moving_square_v; //moving方块的垂直方向
+input [15:0] moving_square;   //moving方块
 output enable_moving_square;
 
 /**************************************************/
 
-reg [15:0] enable_moving_square_h;
+reg [15:0] enable_moving_square_h;  
 reg [15:0] enable_moving_square_v;
 reg [15:0] enable_moving_square_r;
 
@@ -74,12 +74,12 @@ always @ ( posedge clk or negedge rst_n )
     if( !rst_n )
       enable_moving_square_r <= 16'b0000_0000_0000_0000;
     else 
-      enable_moving_square_r <= enable_moving_square_h & enable_moving_square_v;
+      enable_moving_square_r <= enable_moving_square_h & enable_moving_square_v;  //enable_moving_square_r = enable_moving_square_h & enable_moving_square_v;
   end
   
 /**************************************************/
 
-assign enable_moving_square = | enable_moving_square_r;
+assign enable_moving_square = | enable_moving_square_r; //enable_moving_square = | enable_moving_square_r;
 
 /**************************************************/
 

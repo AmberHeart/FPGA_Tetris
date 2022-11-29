@@ -309,11 +309,11 @@ assign sub_line_total = | sub_line[13:0];
 //更新游戏区域内方块分布情况的信息
 
 always @ ( posedge clk or negedge rst_n )
-  begin
+  begin  
     if( !rst_n ) 
       begin
-        fixed_square_map_r <= {300{1'b1}};
-        fixed_square_map_r[14:5] <= 10'b0;
+        fixed_square_map_r <= {300{1'b1}};  //游戏区域内方块分布情况的初始值
+        fixed_square_map_r[14:5] <= 10'b0;    
         fixed_square_map_r[34:25] <= 10'b0;
         fixed_square_map_r[54:45] <= 10'b0;
         fixed_square_map_r[74:65] <= 10'b0;
@@ -325,13 +325,13 @@ always @ ( posedge clk or negedge rst_n )
         fixed_square_map_r[194:185] <= 10'b0;
         fixed_square_map_r[214:205] <= 10'b0;
         fixed_square_map_r[234:225] <= 10'b0;
-        fixed_square_map_r[254:245] <= 10'b0;
-        fixed_square_map_r[274:265] <= 10'b0;
-        cur_sub_line <= 0;
+        fixed_square_map_r[254:245] <= 10'b0;   
+        fixed_square_map_r[274:265] <= 10'b0;   //游戏区域的初始状态
+        cur_sub_line <= 0;    //当前消除的行数
       end 
-    else if( sub_line_total )
+    else if( sub_line_total ) //有某行已满需要消除
       begin 
-        if( sub_line[0] )
+        if( sub_line[0] ) //第一行已满
           begin 
             fixed_square_map_r[14:5] <= 10'b0;
             fixed_square_map_r[34:25] <= fixed_square_map_r[34:25];
@@ -349,7 +349,7 @@ always @ ( posedge clk or negedge rst_n )
             fixed_square_map_r[274:265] <= fixed_square_map_r[274:265];
             cur_sub_line <= cur_sub_line + 1;
           end
-        if( sub_line[1] )
+        if( sub_line[1] ) //第二行已满
           begin 
             fixed_square_map_r[14:5] <= 10'b0;
             fixed_square_map_r[34:25] <= fixed_square_map_r[14:5];
@@ -367,12 +367,12 @@ always @ ( posedge clk or negedge rst_n )
             fixed_square_map_r[274:265] <= fixed_square_map_r[274:265];
             cur_sub_line <= cur_sub_line + 1;
           end 
-        if( sub_line[2] )
+        if( sub_line[2] ) //第三行已满
           begin 
             fixed_square_map_r[14:5] <= 10'b0;
             fixed_square_map_r[34:25] <= fixed_square_map_r[14:5];
-            fixed_square_map_r[54:45] <= fixed_square_map_r[34:25];
-            fixed_square_map_r[74:65] <= fixed_square_map_r[74:65];
+            fixed_square_map_r[54:45] <= fixed_square_map_r[34:25]; 
+            fixed_square_map_r[74:65] <= fixed_square_map_r[74:65]; 
             fixed_square_map_r[94:85] <= fixed_square_map_r[94:85];
             fixed_square_map_r[114:105] <= fixed_square_map_r[114:105];
             fixed_square_map_r[134:125] <= fixed_square_map_r[134:125];
@@ -385,7 +385,7 @@ always @ ( posedge clk or negedge rst_n )
             fixed_square_map_r[274:265] <= fixed_square_map_r[274:265];
             cur_sub_line <= cur_sub_line + 1;
           end      
-        if( sub_line[3] )
+        if( sub_line[3] ) //第四行已满
           begin 
             fixed_square_map_r[14:5] <= 10'b0;
             fixed_square_map_r[34:25] <= fixed_square_map_r[14:5];
@@ -403,7 +403,7 @@ always @ ( posedge clk or negedge rst_n )
             fixed_square_map_r[274:265] <= fixed_square_map_r[274:265];
             cur_sub_line <= cur_sub_line + 1;
           end
-        if( sub_line[4] )
+        if( sub_line[4] ) //第五行已满
           begin 
             fixed_square_map_r[14:5] <= 10'b0;
             fixed_square_map_r[34:25] <= fixed_square_map_r[14:5];
@@ -421,7 +421,7 @@ always @ ( posedge clk or negedge rst_n )
             fixed_square_map_r[274:265] <= fixed_square_map_r[274:265];
             cur_sub_line <= cur_sub_line + 1;
           end
-        if( sub_line[5] )
+        if( sub_line[5] ) //第六行已满
           begin 
             fixed_square_map_r[14:5] <= 10'b0;
             fixed_square_map_r[34:25] <= fixed_square_map_r[14:5];
@@ -439,7 +439,7 @@ always @ ( posedge clk or negedge rst_n )
             fixed_square_map_r[274:265] <= fixed_square_map_r[274:265];
             cur_sub_line <= cur_sub_line + 1;
           end 
-        if( sub_line[6] )
+        if( sub_line[6] ) //第七行已满
           begin
             fixed_square_map_r[14:5] <= 10'b0;
             fixed_square_map_r[34:25] <= fixed_square_map_r[14:5];
@@ -457,7 +457,7 @@ always @ ( posedge clk or negedge rst_n )
             fixed_square_map_r[274:265] <= fixed_square_map_r[274:265];
             cur_sub_line <= cur_sub_line + 1;
           end   
-        if( sub_line[7] )
+        if( sub_line[7] ) //第八行已满
           begin 
             fixed_square_map_r[14:5] <= 10'b0;
             fixed_square_map_r[34:25] <= fixed_square_map_r[14:5];
@@ -475,7 +475,7 @@ always @ ( posedge clk or negedge rst_n )
             fixed_square_map_r[274:265] <= fixed_square_map_r[274:265];
             cur_sub_line <= cur_sub_line + 1;
           end    
-        if( sub_line[8] )
+        if( sub_line[8] ) //第九行已满
           begin 
             fixed_square_map_r[14:5] <= 10'b0;
             fixed_square_map_r[34:25] <= fixed_square_map_r[14:5];
@@ -493,7 +493,7 @@ always @ ( posedge clk or negedge rst_n )
             fixed_square_map_r[274:265] <= fixed_square_map_r[274:265];
             cur_sub_line <= cur_sub_line + 1;
           end    
-        if( sub_line[9] )
+        if( sub_line[9] ) //第十行已满
           begin 
             fixed_square_map_r[14:5] <= 10'b0;
             fixed_square_map_r[34:25] <= fixed_square_map_r[14:5];
@@ -511,7 +511,7 @@ always @ ( posedge clk or negedge rst_n )
             fixed_square_map_r[274:265] <= fixed_square_map_r[274:265];
             cur_sub_line <= cur_sub_line + 1;
           end     
-        if( sub_line[10] )
+        if( sub_line[10] )  //第十一行已满
           begin 
             fixed_square_map_r[14:5] <= 10'b0;
             fixed_square_map_r[34:25] <= fixed_square_map_r[14:5];
@@ -529,7 +529,7 @@ always @ ( posedge clk or negedge rst_n )
             fixed_square_map_r[274:265] <= fixed_square_map_r[274:265];
             cur_sub_line <= cur_sub_line + 1;
           end  
-        if( sub_line[11] )
+        if( sub_line[11] )  //第十二行已满
           begin 
             fixed_square_map_r[14:5] <= 10'b0;
             fixed_square_map_r[34:25] <= fixed_square_map_r[14:5];
@@ -547,7 +547,7 @@ always @ ( posedge clk or negedge rst_n )
             fixed_square_map_r[274:265] <= fixed_square_map_r[274:265];
             cur_sub_line <= cur_sub_line + 1;
           end 
-        if( sub_line[12] )
+        if( sub_line[12] )  //第十三行已满
           begin 
             fixed_square_map_r[14:5] <= 10'b0;
             fixed_square_map_r[34:25] <= fixed_square_map_r[14:5];
@@ -565,7 +565,7 @@ always @ ( posedge clk or negedge rst_n )
             fixed_square_map_r[274:265] <= fixed_square_map_r[274:265];
             cur_sub_line <= cur_sub_line + 1;
           end 
-        if( sub_line[13] )
+        if( sub_line[13] )   //第十四行已满
           begin 
             fixed_square_map_r[14:5] <= 10'b0;
             fixed_square_map_r[34:25] <= fixed_square_map_r[14:5];
@@ -584,26 +584,26 @@ always @ ( posedge clk or negedge rst_n )
             cur_sub_line <= cur_sub_line + 1;
           end
       end
-    else if( load_next_square_r )
+    else if( load_next_square_r ) //加载下一个方块
       begin
-        fixed_square_map_r[moving_square_loc] <= moving_square_r[0] || fixed_square_map_r[moving_square_loc];
-        fixed_square_map_r[moving_square_loc + 8'd1] <= moving_square_r[1] || fixed_square_map_r[moving_square_loc + 8'd1];
-        fixed_square_map_r[moving_square_loc + 8'd2] <= moving_square_r[2] || fixed_square_map_r[moving_square_loc + 8'd2];
-        fixed_square_map_r[moving_square_loc + 8'd3] <= moving_square_r[3] || fixed_square_map_r[moving_square_loc + 8'd3];        
-        fixed_square_map_r[moving_square_loc + 8'd20] <= moving_square_r[4] || fixed_square_map_r[moving_square_loc + 8'd20];
-        fixed_square_map_r[moving_square_loc + 8'd21] <= moving_square_r[5] || fixed_square_map_r[moving_square_loc + 8'd21];
+        fixed_square_map_r[moving_square_loc] <= moving_square_r[0] || fixed_square_map_r[moving_square_loc]; //方块的第一行
+        fixed_square_map_r[moving_square_loc + 8'd1] <= moving_square_r[1] || fixed_square_map_r[moving_square_loc + 8'd1]; 
+        fixed_square_map_r[moving_square_loc + 8'd2] <= moving_square_r[2] || fixed_square_map_r[moving_square_loc + 8'd2]; 
+        fixed_square_map_r[moving_square_loc + 8'd3] <= moving_square_r[3] || fixed_square_map_r[moving_square_loc + 8'd3];          
+        fixed_square_map_r[moving_square_loc + 8'd20] <= moving_square_r[4] || fixed_square_map_r[moving_square_loc + 8'd20]; //方块的第二行
+        fixed_square_map_r[moving_square_loc + 8'd21] <= moving_square_r[5] || fixed_square_map_r[moving_square_loc + 8'd21]; 
         fixed_square_map_r[moving_square_loc + 8'd22] <= moving_square_r[6] || fixed_square_map_r[moving_square_loc + 8'd22];
         fixed_square_map_r[moving_square_loc + 8'd23] <= moving_square_r[7] || fixed_square_map_r[moving_square_loc + 8'd23];    
-        fixed_square_map_r[moving_square_loc + 8'd40] <= moving_square_r[8] || fixed_square_map_r[moving_square_loc + 8'd40];
+        fixed_square_map_r[moving_square_loc + 8'd40] <= moving_square_r[8] || fixed_square_map_r[moving_square_loc + 8'd40]; //方块的第三行
         fixed_square_map_r[moving_square_loc + 8'd41] <= moving_square_r[9] || fixed_square_map_r[moving_square_loc + 8'd41];
-        fixed_square_map_r[moving_square_loc + 8'd42] <= moving_square_r[10] || fixed_square_map_r[moving_square_loc + 8'd42];
+        fixed_square_map_r[moving_square_loc + 8'd42] <= moving_square_r[10] || fixed_square_map_r[moving_square_loc + 8'd42];  
         fixed_square_map_r[moving_square_loc + 8'd43] <= moving_square_r[11] || fixed_square_map_r[moving_square_loc + 8'd43];        
-        fixed_square_map_r[moving_square_loc + 8'd60] <= moving_square_r[12] || fixed_square_map_r[moving_square_loc + 8'd60];
+        fixed_square_map_r[moving_square_loc + 8'd60] <= moving_square_r[12] || fixed_square_map_r[moving_square_loc + 8'd60];  //方块的第四行
         fixed_square_map_r[moving_square_loc + 8'd61] <= moving_square_r[13] || fixed_square_map_r[moving_square_loc + 8'd61];
         fixed_square_map_r[moving_square_loc + 8'd62] <= moving_square_r[14] || fixed_square_map_r[moving_square_loc + 8'd62];
         fixed_square_map_r[moving_square_loc + 8'd63] <= moving_square_r[15] || fixed_square_map_r[moving_square_loc + 8'd63];
-        cur_sub_line <= cur_sub_line;
-      end
+        cur_sub_line <= cur_sub_line; // don't change
+      end 
   end 
 
 /**************************************************/
@@ -619,12 +619,12 @@ always @ ( posedge clk or negedge rst_n)
 
 /**************************************************/  
 
-assign moving_square_h = moving_square_h_r;
-assign moving_square_v = moving_square_v_r;
-assign fixed_square_map = fixed_square_map_r;
-assign load_next_square = load_next_square_r;
-assign game_over = game_over_r;
-assign moving_square = moving_square_r;
+assign moving_square_h = moving_square_h_r; 
+assign moving_square_v = moving_square_v_r; 
+assign fixed_square_map = fixed_square_map_r; 
+assign load_next_square = load_next_square_r; 
+assign game_over = game_over_r; 
+assign moving_square = moving_square_r; 
 assign hold_square = hold_square_r;
 assign cur_score_bin = cur_sub_line;
  

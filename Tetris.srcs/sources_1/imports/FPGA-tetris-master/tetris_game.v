@@ -4,20 +4,20 @@ module tetris_game
   hsync_out, vsync_out, red_out, green_out, blue_out,
   vga_clk, vga_blank, vga_sync
 );
-input clk;
+input clk;  
 input rst_n;
 input right;
 input left;
 input rotateR;
 input down;
-output hsync_out;
-output vsync_out;
-output red_out;
-output green_out;
-output blue_out;
-output vga_clk;
-output vga_blank;
-output vga_sync;
+output hsync_out;   //行同步信号
+output vsync_out;   //场同步信号
+output red_out;    //红色信号
+output green_out;   //绿色信号
+output blue_out;    //蓝色信号
+output vga_clk;    //VGA时钟
+output vga_blank;   //VGA空白信号
+output vga_sync;    //VGA同步信号
 
 /**************************************************/
 
@@ -67,7 +67,7 @@ debouncer_module U2
  .rst_n(rst_n),
  .key_in(right),
  .key_out(move_right)
-);
+);  
 
 /**************************************************/
 
