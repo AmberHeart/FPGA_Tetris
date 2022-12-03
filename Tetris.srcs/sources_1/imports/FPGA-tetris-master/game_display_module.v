@@ -41,11 +41,17 @@ always @ ( posedge clk or negedge rst_n )
         bg_green <= pic_next_data | pic_hold_data | pic_score_data | enable_border | pic_num_data | enable_next_square | enable_hold_square | enable_fixed_square;
         bg_blue  <= pic_next_data | pic_hold_data | pic_score_data | enable_border | enable_fixed_square;
       end
-    else if( sync_ready_sig )
+    else if( sync_ready_sig ) //行有效且场有效
       begin
         bg_red   <= pic_next_data | pic_hold_data | pic_score_data | enable_border | pic_num_data | enable_next_square | enable_hold_square;
         bg_green <= pic_next_data | pic_hold_data | pic_score_data | enable_border | pic_num_data | enable_next_square | enable_hold_square | enable_fixed_square;
         bg_blue  <= pic_next_data | pic_hold_data | pic_score_data | enable_border | enable_fixed_square;
+      end
+    else //其他情况RGB置0
+      begin
+        bg_red<=0;
+        bg_blue<=0;
+        bg_green<=0;
       end
   end
 
