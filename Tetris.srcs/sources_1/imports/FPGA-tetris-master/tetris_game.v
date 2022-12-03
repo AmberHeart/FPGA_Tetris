@@ -57,7 +57,7 @@ wire game_over;
   clk_wiz_0 U1
    (
     // Clock out ports
-    .clk_out1(clk),     // output clk_out1//
+    .clk_out1(clk),     // output clk_out1////
    // Clock in ports
     .clk_in1(clk_25MHz));  
 /**************************************************/
