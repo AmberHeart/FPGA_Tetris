@@ -1,78 +1,42 @@
-module debouncer_module
-( clk, rst_n, key_in, 
-  key_out
-);
-input clk;
-input rst_n;
-input key_in;
-output key_out;
 
-/**************************************************/
+`timescale 1ns / 1ps
 
-reg key_in_dly1;  //键入延时1
-reg key_in_dly2;  //键入延时2
-reg [17:0] count_debouncer; //计数器
-reg key_out_r;  //键出
-reg key_out_dly1_r; //键出延时1
+ 
+module debouncer_module(
+	input clk,
+	input rst_n,
+	input key_in,
+	output reg key_out);
+	
+reg key_in0;
+reg [19:0] cnt;
 
-/**************************************************/
+wire change;
+parameter N=20'hF4240;  //100 0000 若clk =100MHz, 取T=10ms, 则N =F4240= 1000000个clk周期,
 
-always @ ( posedge clk or negedge rst_n )
-  begin
-    if( !rst_n )
-       begin
-         key_in_dly1 <= 1'b0;
-         key_in_dly2 <= 1'b0;
-       end
-    else    
-       begin
-         key_in_dly1 <= key_in; //键入延时1 = 键入
-         key_in_dly2 <= key_in_dly1;  //键入延时2 = 键入延时1
-       end
-  end
 
-/**************************************************/
 
-always @ ( posedge clk or negedge rst_n )
-  begin
-    if( !rst_n )
-      begin
-        count_debouncer <= 18'd260_000; //计数器 = 18'd260_000
-	      key_out_r <= 1'b0;  //键出 = 1'b0
-      end
-    else if( key_in_dly2 )  //键入延时2
-      begin
-        count_debouncer <= 18'd0; //计数器 = 18'd0
-	      key_out_r <= 1'b0;  //键出 = 1'b0
-      end
-    else if( count_debouncer == 18'd250_000 ) //计数器 == 18'd250_000
-      begin
-        key_out_r <= 1'b1;  //键出 = 1'b1 
-      end
-    else if( count_debouncer == 18'd260_000 ) //计数器 == 18'd260_000
-      begin
-        key_out_r <= 1'b0;  //键出 = 1'b0
-      end
-    else
-      count_debouncer <= count_debouncer + 1'b1;  //计数器 = 计数器 + 1'b1
-  end
+// key_in0;
+always@(posedge clk or negedge rst_n)
+	if(!rst_n)
+		key_in0<=0;
+	else 
+		key_in0<=key_in;
+		
+assign change=(key_in & !key_in0)|(!key_in & key_in0); //不抖动时一直为0
 
-/**************************************************/
+// cnt
+always@(posedge clk or negedge rst_n)
+	if(!rst_n)
+		cnt<=0;
+	else if(change) cnt<=0; //出现抖动重新计数
+	else cnt<=cnt+1;
 
-always @ ( posedge clk or negedge rst_n )
-  begin
-    if( !rst_n )
-      key_out_dly1_r <= 1'b0; //键出延时1 = 1'b0
-    else
-      key_out_dly1_r <= key_out_r;  //键出延时1 = 键出
-  end
-  
-/**************************************************/  
-
-assign key_out = key_out_r & ( ~key_out_dly1_r ); //键出 = 键出 & ( ~键出延时1 )
-
-/**************************************************/
-
+// y
+always@(posedge clk or negedge rst_n)
+	if(!rst_n)
+		key_out<=0; 
+	else if(cnt==N-1)
+	key_out<=key_in;
+	
 endmodule
-
-
