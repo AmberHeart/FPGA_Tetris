@@ -57,7 +57,7 @@ wire game_over;
   clk_wiz_0 U1
    (
     // Clock out ports
-    .clk_out1(clk),     // output clk_out1
+    .clk_out1(clk),     // output clk_out1//
    // Clock in ports
     .clk_in1(clk_25MHz));  
 /**************************************************/
@@ -196,7 +196,7 @@ score_control_module U12
 
 /**************************************************/
 
-game_sync_module U13
+game_sync_module U13 
 (
  .clk(clk_25MHz),
  .rst_n(rst_n),

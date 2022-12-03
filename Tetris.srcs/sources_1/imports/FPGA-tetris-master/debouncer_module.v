@@ -9,7 +9,7 @@ module debouncer_module(
 	output reg key_out);
 	
 reg key_in0;
-reg [19:0] cnt;
+reg [19:0] cnt;//
 
 wire change;
 parameter N=20'hF4240;  //100 0000 若clk =100MHz, 取T=10ms, 则N =F4240= 1000000个clk周期,
