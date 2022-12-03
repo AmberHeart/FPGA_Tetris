@@ -62,9 +62,9 @@ generate
             enable_next_square_h[i] <= 1'b0;
           else if( enable_square[i] == 1'b1 )
             begin 
-              if( col_addr_sig == 11'd191 + ( i % 11'd04 ) * 20 )  
+              if( col_addr_sig == 11'd191 + ( i % 11'd04 ) * 20 )   //191 211 231 251
                 enable_next_square_h[i] <= 1'b1; 
-              else if( col_addr_sig == 11'd210 + ( i % 11'd04 ) * 20 )
+              else if( col_addr_sig == 11'd210 + ( i % 11'd04 ) * 20 )  //210 230 250 270
                 enable_next_square_h[i] <= 1'b0; 
               else 
                 enable_next_square_h[i] <= enable_next_square_h[i];
@@ -87,9 +87,9 @@ generate
             enable_next_square_v[j] <= 1'b0;
           else if( enable_square[j] == 1'b1 )
             begin
-              if( row_addr_sig == 11'd51 + ( j / 11'd04 ) * 11'd20)
+              if( row_addr_sig == 11'd51 + ( j / 11'd04 ) * 11'd20) //51 71 91 111
                 enable_next_square_v[j] <= 1'b1;
-              else if( row_addr_sig == 11'd70 + ( j / 11'd04 ) * 11'd20 )
+              else if( row_addr_sig == 11'd70 + ( j / 11'd04 ) * 11'd20 ) //70 90 110 130
                 enable_next_square_v[j] <= 1'b0; 
               else 
                 enable_next_square_v[j] <= enable_next_square_v[j];

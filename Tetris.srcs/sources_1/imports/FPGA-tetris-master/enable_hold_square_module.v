@@ -27,9 +27,9 @@ generate
             enable_hold_square_h[i] <= 1'b0;
           else if( hold_square[i] == 1'b1 )
             begin 
-              if( col_addr_sig == 11'd191 + ( i % 11'd04 ) * 20 )   //行地址 = 191 + ( i % 4 ) * 20
+              if( col_addr_sig == 11'd191 + ( i % 11'd04 ) * 20 )   //行地址 = 191 + ( i % 4 ) * 20:191, 211, 231, 251
                 enable_hold_square_h[i] <= 1'b1;  
-              else if( col_addr_sig == 11'd210 + ( i % 11'd04 ) * 20 )  //行地址 = 210 + ( i % 4 ) * 20
+              else if( col_addr_sig == 11'd210 + ( i % 11'd04 ) * 20 )  //行地址 = 210 + ( i % 4 ) * 20 : 210, 230, 250, 270
                 enable_hold_square_h[i] <= 1'b0; 
               else 
                 enable_hold_square_h[i] <= enable_hold_square_h[i];
@@ -52,9 +52,9 @@ generate
             enable_hold_square_v[j] <= 1'b0;
           else if( hold_square[j] == 1'b1 )
             begin
-              if( row_addr_sig == 11'd161 + ( j / 11'd04 ) * 11'd20)  //列地址 = 161 + ( j / 4 ) * 20
+              if( row_addr_sig == 11'd161 + ( j / 11'd04 ) * 11'd20)  //列地址 = 161 + ( j / 4 ) * 20: 161, 181, 201, 221
                 enable_hold_square_v[j] <= 1'b1;
-              else if( row_addr_sig == 11'd180 + ( j / 11'd04 ) * 11'd20 )  //列地址 = 180 + ( j / 4 ) * 20
+              else if( row_addr_sig == 11'd180 + ( j / 11'd04 ) * 11'd20 )  //列地址 = 180 + ( j / 4 ) * 20 : 180, 200, 220, 240
                 enable_hold_square_v[j] <= 1'b0; 
               else 
                 enable_hold_square_v[j] <= enable_hold_square_v[j];

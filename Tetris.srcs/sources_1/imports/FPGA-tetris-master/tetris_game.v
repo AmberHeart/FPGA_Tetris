@@ -182,15 +182,15 @@ enable_hold_square_module U11
 
 /**************************************************/
 
-score_control_module U12
-(
- .clk(clk_25MHz),
- .rst_n(rst_n),
- .cur_score_bin(cur_score_bin),
- .col_addr_sig(col_addr_sig),
- .row_addr_sig(row_addr_sig),
- .pic_num_addr(pic_num_addr)
-);
+// score_control_module U12
+// (
+//  .clk(clk_25MHz),
+//  .rst_n(rst_n),
+//  .cur_score_bin(cur_score_bin),
+//  .col_addr_sig(col_addr_sig),
+//  .row_addr_sig(row_addr_sig),
+//  .pic_num_addr(pic_num_addr)
+// );
 
 /**************************************************/
 
@@ -202,8 +202,7 @@ game_sync_module U13
  .col_addr_sig(col_addr_sig),
  .row_addr_sig(row_addr_sig),
  .hsync_out(hsync_out),
- .vsync_out(vsync_out),
- .pic_addr(pic_addr)
+ .vsync_out(vsync_out)
 );
 
 /**************************************************/
@@ -219,11 +218,11 @@ game_display_module U14
  .enable_fixed_square(enable_fixed_square),
  .enable_next_square(enable_next_square),
  .enable_hold_square(enable_hold_square),
- .pic_over_data(0),
- .pic_next_data(0),
- .pic_hold_data(0),
- .pic_score_data(0),
- .pic_num_data(0),
+ .pic_over_data(pic_over_data),
+ .pic_next_data(pic_next_data),
+ .pic_hold_data(pic_hold_data),
+ .pic_score_data(pic_score_data),
+ .pic_num_data(pic_num_data),
  .red_out(red_out),
  .green_out(green_out),
  .blue_out(blue_out)
@@ -241,48 +240,55 @@ game_process_module U15
 
 /**************************************************/
 
-// pic_over_module U16
-// (
-//  .clka(clk_25MHz),
-//  .addra(pic_addr),
-//  .douta(pic_over_data)
-// ); 
+pic_over_module U16
+(
+ .clka(clk),
+ .col_addr_sig(col_addr_sig),
+ .row_addr_sig(row_addr_sig),
+ .douta(pic_over_data)
+); 
  
-// /**************************************************/ 
+/**************************************************/ 
 
-// pic_next_module U17
-// (
-//  .clka(clk_25MHz),
-//  .addra(pic_addr),
-//  .douta(pic_next_data)
-// ); 
+pic_next_module U17
+(
+ .clka(clk),
+ .col_addr_sig(col_addr_sig),
+ .row_addr_sig(row_addr_sig),
+ .douta(pic_next_data)
+); 
 
-// /**************************************************/ 
+/**************************************************/ 
 
-// pic_hold_module U18
-// (
-//  .clka(clk_25MHz),
-//  .addra(pic_addr),
-//  .douta(pic_hold_data)
-// ); 
+pic_hold_module U18
+(
+ .clka(clk),
+ .col_addr_sig(col_addr_sig),
+ .row_addr_sig(row_addr_sig),
+ .douta(pic_hold_data)
+); 
 
-// /**************************************************/
+/**************************************************/
 
-// pic_score_module U19
-// (
-//  .clka(clk_25MHz),
-//  .addra(pic_addr),
-//  .douta(pic_score_data)
-// ); 
+pic_score_module U19
+(
+ .clka(clk),
+ .col_addr_sig(col_addr_sig),
+ .row_addr_sig(row_addr_sig),
+ .douta(pic_score_data)
+); 
 
-// /**************************************************/
+/**************************************************/
 
-// pic_num_module U20
-// (
-//  .clka(clk_25MHz),
-//  .addra(pic_num_addr),
-//  .douta(pic_num_data)
-// ); 
+pic_num_module U20
+(
+ .clka(clk),
+ .rst_n(rst_n),
+  .cur_score_bin(cur_score_bin),
+ .col_addr_sig(col_addr_sig),
+ .row_addr_sig(row_addr_sig),
+ .douta(pic_num_data)
+); 
 
 /**************************************************/
 
