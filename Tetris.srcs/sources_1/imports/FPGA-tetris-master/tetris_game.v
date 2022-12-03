@@ -1,8 +1,7 @@
 module tetris_game
 ( clk, rst_n,
   right, left, rotateR, down, 
-  hsync_out, vsync_out, red_out, green_out, blue_out,
-  vga_clk, vga_blank, vga_sync
+  hsync_out, vsync_out, red_out, green_out, blue_out
 );
 input clk;  
 input rst_n;
@@ -15,9 +14,9 @@ output vsync_out;   //场同步信号
 output red_out;    //红色信号
 output green_out;   //绿色信号
 output blue_out;    //蓝色信号
-output vga_clk;    //VGA时钟
-output vga_blank;   //VGA空白信号
-output vga_sync;    //VGA同步信号
+// output vga_clk;    //VGA时钟
+// output vga_blank;   //VGA空白信号
+// output vga_sync;    //VGA同步信号
 
 /**************************************************/
 
@@ -220,11 +219,11 @@ game_display_module U14
  .enable_fixed_square(enable_fixed_square),
  .enable_next_square(enable_next_square),
  .enable_hold_square(enable_hold_square),
- .pic_over_data(pic_over_data),
- .pic_next_data(pic_next_data),
- .pic_hold_data(pic_hold_data),
- .pic_score_data(pic_score_data),
- .pic_num_data(pic_num_data),
+ .pic_over_data(0),
+ .pic_next_data(0),
+ .pic_hold_data(0),
+ .pic_score_data(0),
+ .pic_num_data(0),
  .red_out(red_out),
  .green_out(green_out),
  .blue_out(blue_out)
@@ -287,9 +286,9 @@ game_process_module U15
 
 /**************************************************/
 
-assign vga_clk = ~clk_25MHz;
-assign vga_blank = hsync_out & vsync_out;
-assign vga_sync = 1'b0;
+// assign vga_clk = ~clk_25MHz;
+// assign vga_blank = hsync_out & vsync_out;
+// assign vga_sync = 1'b0;
 
 /**************************************************/
 

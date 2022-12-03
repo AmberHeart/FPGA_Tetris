@@ -2,4 +2,5 @@
 .Xil/
 Tetris.hw/
 Tetris.ip_user_files/
-Tetris.cache
+Tetris.cache/
+Tetris.runs/
