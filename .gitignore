@@ -3,3 +3,8 @@
 Tetris.cache/
 Tetris.hw/
 Tetris.ip_user_files/
+*.str
+*.xml
+*.log
+*.jou
+*.wpc

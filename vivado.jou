@@ -2,13 +2,13 @@
 # Vivado v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Mon Nov 28 21:50:26 2022
-# Process ID: 100984
-# Current directory: E:/Vivado/Tetris/Tetris/FPGA_Tetris
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent107972 E:\Vivado\Tetris\Tetris\FPGA_Tetris\Tetris.xpr
-# Log file: E:/Vivado/Tetris/Tetris/FPGA_Tetris/vivado.log
-# Journal file: E:/Vivado/Tetris/Tetris/FPGA_Tetris\vivado.jou
+# Start of session at: Sat Dec  3 09:42:30 2022
+# Process ID: 79264
+# Current directory: D:/Asteria/vivado/Tetris/FPGA_Tetris
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent79968 D:\Asteria\vivado\Tetris\FPGA_Tetris\Tetris.xpr
+# Log file: D:/Asteria/vivado/Tetris/FPGA_Tetris/vivado.log
+# Journal file: D:/Asteria/vivado/Tetris/FPGA_Tetris\vivado.jou
 #-----------------------------------------------------------
 start_gui
-open_project E:/Vivado/Tetris/Tetris/FPGA_Tetris/Tetris.xpr
+open_project D:/Asteria/vivado/Tetris/FPGA_Tetris/Tetris.xpr
 update_compile_order -fileset sources_1

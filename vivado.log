@@ -2,23 +2,22 @@
 # Vivado v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Mon Nov 28 21:50:26 2022
-# Process ID: 100984
-# Current directory: E:/Vivado/Tetris/Tetris/FPGA_Tetris
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent107972 E:\Vivado\Tetris\Tetris\FPGA_Tetris\Tetris.xpr
-# Log file: E:/Vivado/Tetris/Tetris/FPGA_Tetris/vivado.log
-# Journal file: E:/Vivado/Tetris/Tetris/FPGA_Tetris\vivado.jou
+# Start of session at: Sat Dec  3 09:42:30 2022
+# Process ID: 79264
+# Current directory: D:/Asteria/vivado/Tetris/FPGA_Tetris
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent79968 D:\Asteria\vivado\Tetris\FPGA_Tetris\Tetris.xpr
+# Log file: D:/Asteria/vivado/Tetris/FPGA_Tetris/vivado.log
+# Journal file: D:/Asteria/vivado/Tetris/FPGA_Tetris\vivado.jou
 #-----------------------------------------------------------
 start_gui
-open_project E:/Vivado/Tetris/Tetris/FPGA_Tetris/Tetris.xpr
+open_project D:/Asteria/vivado/Tetris/FPGA_Tetris/Tetris.xpr
 INFO: [Project 1-313] Project file moved from 'E:/Vivado/Tetris/Tetris' since last save.
-WARNING: [filemgmt 56-2] Default IP Output Path : Could not find the directory 'E:/Vivado/Tetris/Tetris/FPGA_Tetris/Tetris.gen/sources_1', nor could it be found using path 'E:/Vivado/Tetris/Tetris/Tetris.gen/sources_1'.
+WARNING: [filemgmt 56-2] Default IP Output Path : Could not find the directory 'D:/Asteria/vivado/Tetris/FPGA_Tetris/Tetris.gen/sources_1', nor could it be found using path 'E:/Vivado/Tetris/Tetris/Tetris.gen/sources_1'.
+WARNING: [filemgmt 56-2] IPUserFilesDir: Could not find the directory 'D:/Asteria/vivado/Tetris/FPGA_Tetris/Tetris.ip_user_files', nor could it be found using path 'E:/Vivado/Tetris/Tetris/Tetris.ip_user_files'.
 Scanning sources...
 Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
-INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Vivado/Vivado/2021.1/data/ip'.
-open_project: Time (s): cpu = 00:00:28 ; elapsed = 00:00:13 . Memory (MB): peak = 1136.648 ; gain = 0.000
-update_compile_order -fileset sources_1
-exit
-INFO: [Common 17-206] Exiting Vivado at Mon Nov 28 21:57:29 2022...
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2021.1/data/ip'.
+open_project: Time (s): cpu = 00:00:20 ; elapsed = 00:00:08 . Memory (MB): peak = 1122.508 ; gain = 0.000
+updatINFO: [Common 17-206] Exiting Vivado at Sat Dec  3 09:42:58 2022...
