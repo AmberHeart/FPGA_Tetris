@@ -5,3 +5,9 @@ Tetris.ip_user_files/
 Tetris.cache/
 Tetris.runs/
 Tetris.sim/
+*.str
+*.xml
+*.log
+*.jou
+*.wpc
+Tetris.cache

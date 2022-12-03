@@ -52,12 +52,13 @@ wire game_over;
 
 /**************************************************/
 
-clk_gen_module U1
-(
- .clk_in(clk),
- .clk_25MHz(clk_25MHz)
-);
 
+  clk_wiz_0 U1
+   (
+    // Clock out ports
+    .clk_out1(clk),     // output clk_out1////
+   // Clock in ports
+    .clk_in1(clk_25MHz));  
 /**************************************************/
 
 debouncer_module U2
@@ -194,7 +195,7 @@ enable_hold_square_module U11
 
 /**************************************************/
 
-game_sync_module U13
+game_sync_module U13 
 (
  .clk(clk_25MHz),
  .rst_n(rst_n),
