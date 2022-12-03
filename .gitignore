@@ -1,6 +1,5 @@
 
 .Xil/
-Tetris.cache/
 Tetris.hw/
 Tetris.ip_user_files/
 *.str
@@ -8,3 +7,4 @@ Tetris.ip_user_files/
 *.log
 *.jou
 *.wpc
+Tetris.cache
