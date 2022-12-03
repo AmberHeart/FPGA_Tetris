@@ -92,7 +92,7 @@ generate
     end
 endgenerate
 
-assign move_right_en = ~(| move_right_en_w);  //右移使能
+assign move_right_en = ~((| move_right_en_w)|game_over_r);  //右移使能
 
 /**************************************************/
 //判断下落的方块是否能左移
@@ -105,7 +105,7 @@ generate
     end
 endgenerate
 
-assign move_left_en = ~(| move_left_en_w);  //左移使能
+assign move_left_en = ~((| move_left_en_w)|game_over_r);  //左移使能
 
 /**************************************************/
 //判断下落的方块是否能和存储区的方块互?
@@ -118,7 +118,7 @@ generate
     end
 endgenerate
 
-assign change_en = ~(| change_en_w);  //hold使能
+assign change_en = ~((| change_en_w)|game_over_r);  //hold使能
 
 /**************************************************/
 //判断下落的方块是否能向右旋转
@@ -156,7 +156,7 @@ generate
     end
 endgenerate
 
-assign rotate_en = ~(| rotate_en_w);  //旋转使能
+assign rotate_en = ~((| rotate_en_w)|game_over_r);  //旋转使能
 
 /**************************************************/
 //判断是否发生成功碰撞

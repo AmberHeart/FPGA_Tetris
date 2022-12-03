@@ -2,4 +2,9 @@
 .Xil/
 Tetris.hw/
 Tetris.ip_user_files/
+*.str
+*.xml
+*.log
+*.jou
+*.wpc
 Tetris.cache

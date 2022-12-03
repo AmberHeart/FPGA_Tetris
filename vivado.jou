@@ -1,14 +1,14 @@
 #-----------------------------------------------------------
-# Vivado v2022.1 (64-bit)
-# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
-# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
-# Start of session at: Sat Dec  3 10:02:47 2022
-# Process ID: 18232
-# Current directory: C:/Users/sure/OneDrive - USTC/桌面/FPGA_hw/FPGA_Tetris
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent11692 C:\Users\sure\OneDrive - USTC\桌面\FPGA_hw\FPGA_Tetris\Tetris.xpr
-# Log file: C:/Users/sure/OneDrive - USTC/桌面/FPGA_hw/FPGA_Tetris/vivado.log
-# Journal file: C:/Users/sure/OneDrive - USTC/桌面/FPGA_hw/FPGA_Tetris\vivado.jou
-# Running On: DESKTOP-LVUEN47, OS: Windows, CPU Frequency: 2688 MHz, CPU Physical cores: 6, Host memory: 16905 MB
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Sat Dec  3 09:42:30 2022
+# Process ID: 79264
+# Current directory: D:/Asteria/vivado/Tetris/FPGA_Tetris
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent79968 D:\Asteria\vivado\Tetris\FPGA_Tetris\Tetris.xpr
+# Log file: D:/Asteria/vivado/Tetris/FPGA_Tetris/vivado.log
+# Journal file: D:/Asteria/vivado/Tetris/FPGA_Tetris\vivado.jou
 #-----------------------------------------------------------
 start_gui
-open_project {C:/Users/sure/OneDrive - USTC/桌面/FPGA_hw/FPGA_Tetris/Tetris.xpr}
+open_project D:/Asteria/vivado/Tetris/FPGA_Tetris/Tetris.xpr
+update_compile_order -fileset sources_1
