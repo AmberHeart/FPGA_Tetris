@@ -1,6 +1,6 @@
 module tetris_game
 ( clk, rst_n,
-  right,acc, left, rotateR, down, 
+  right,acc, left, rotateR, down, easy, hard,
   hsync_out, vsync_out, red_out, green_out, blue_out/* ,
   vga_clk, vga_blank, vga_sync */
 );
@@ -11,6 +11,8 @@ input acc;
 input left;
 input rotateR;
 input down;
+input easy;
+input hard;
 output hsync_out;   //行同步信号
 output vsync_out;   //场同步信号
 output [3:0] red_out;    //红色信号
@@ -41,6 +43,7 @@ wire [10:0] col_addr_sig;
 wire [10:0] row_addr_sig;
 wire sync_ready_sig;
 wire ingame_sig;
+wire start_sig;
 wire [18:0] pic_addr;
 wire [15:0] hold_square;
 wire pic_hold_data;
@@ -257,6 +260,8 @@ game_display_module U14
  .rst_n(rst_n),
  .sync_ready_sig(sync_ready_sig),
  .ingame_sig(ingame_sig),
+ .start_sig(start_sig),
+ .load_next_square(load_next_square), 
 .col_addr_sig(col_addr_sig),
  .row_addr_sig(row_addr_sig),
  .enable_border(enable_border),
@@ -280,8 +285,10 @@ game_process_module U15
 (
  .clk(clk_25MHz),
  .rst_n(rst_n),
+ .game_start({hard, easy}),
  .game_over(game_over),
- .ingame_sig(ingame_sig)
+ .ingame_sig(ingame_sig),
+ .start_sig(start_sig)
 ); 
 
 /**************************************************/
