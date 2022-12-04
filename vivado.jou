@@ -2,13 +2,35 @@
 # Vivado v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Mon Nov 28 21:50:26 2022
-# Process ID: 100984
-# Current directory: E:/Vivado/Tetris/Tetris/FPGA_Tetris
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent107972 E:\Vivado\Tetris\Tetris\FPGA_Tetris\Tetris.xpr
-# Log file: E:/Vivado/Tetris/Tetris/FPGA_Tetris/vivado.log
-# Journal file: E:/Vivado/Tetris/Tetris/FPGA_Tetris\vivado.jou
+# Start of session at: Sat Dec  3 17:06:03 2022
+# Process ID: 164408
+# Current directory: E:/Vivado/Tetris -index/Tetris/FPGA_Tetris
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent174284 E:\Vivado\Tetris -index\Tetris\FPGA_Tetris\Tetris.xpr
+# Log file: E:/Vivado/Tetris -index/Tetris/FPGA_Tetris/vivado.log
+# Journal file: E:/Vivado/Tetris -index/Tetris/FPGA_Tetris\vivado.jou
 #-----------------------------------------------------------
 start_gui
-open_project E:/Vivado/Tetris/Tetris/FPGA_Tetris/Tetris.xpr
+open_project {E:/Vivado/Tetris -index/Tetris/FPGA_Tetris/Tetris.xpr}
 update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {E:/Vivado/Tetris -index/Tetris/FPGA_Tetris/Tetris.runs/impl_1/tetris_game.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {E:/Vivado/Tetris -index/Tetris/FPGA_Tetris/Tetris.runs/impl_1/tetris_game.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {E:/Vivado/Tetris -index/Tetris/FPGA_Tetris/Tetris.runs/impl_1/tetris_game.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]

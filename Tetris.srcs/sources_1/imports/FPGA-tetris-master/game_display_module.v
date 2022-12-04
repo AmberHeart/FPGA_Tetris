@@ -2,7 +2,7 @@ module game_display_module
 ( clk, rst_n, sync_ready_sig, ingame_sig,
   enable_border, enable_moving_square, enable_fixed_square, enable_next_square, enable_hold_square,
   pic_over_data, pic_next_data, pic_hold_data, pic_score_data, pic_num_data,
-  red_out, green_out, blue_out
+  red_out, green_out, blue_out, col_addr_sig,row_addr_sig
 );
 input clk;
 input rst_n;  
@@ -18,9 +18,11 @@ input pic_next_data;
 input pic_hold_data;
 input pic_score_data;
 input pic_num_data;
-output red_out;
-output green_out;
-output blue_out;
+input [7:0] col_addr_sig;
+input [7:0] row_addr_sig;
+output [3:0] red_out;
+output [3:0] green_out;
+output [3:0] blue_out;
 
 /**************************************************/		  
 
@@ -85,11 +87,35 @@ always @ ( posedge clk or negedge rst_n )
       end  
   end 
  
+wire [11:0] rgbdata;
+wire [14:0] addra;
+wire [3:0] red_back;
+wire [3:0] green_back;
+wire [3:0] blue_back;
+assign addra = ((row_addr_sig >> 2) * 160) + (col_addr_sig >> 2);
+
+blk_mem_gen_1 your_instance_name21 (
+  .clka(clk),    // input wire clka
+  .ena(1),      // input wire ena
+  .addra(addra),  // input wire [14 : 0] addra
+  .douta(rgbdata)  // output wire [11 : 0] douta
+);
+
+assign red_back   = rgbdata[11:8];
+assign green_back = rgbdata[7:4];
+assign blue_back  = rgbdata[3:0];
+
+wire [3:0] red_out_f, green_out_f, blue_out_f;
+assign red_out_f   = red_out_r   ? 4'b1111  : 4'b0000;
+assign green_out_f = green_out_r ? 4'b1111  : 4'b0000;
+assign blue_out_f  = blue_out_r  ? 4'b1111  : 4'b0000;
+
+
 /**************************************************/
 
-assign red_out = red_out_r;
-assign green_out = green_out_r;
-assign blue_out = blue_out_r;
+assign red_out = red_out_r ? red_out_f : red_back;
+assign green_out = green_out_r ? green_out_f : green_back;
+assign blue_out = blue_out_r ? blue_out_f : blue_back;
 
 /**************************************************/
 

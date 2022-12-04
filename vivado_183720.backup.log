@@ -1,0 +1,73 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Sat Dec  3 16:30:38 2022
+# Process ID: 183720
+# Current directory: E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent184604 E:\Vivado\Tetris - 副本\Tetris\FPGA_Tetris\Tetris.xpr
+# Log file: E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/vivado.log
+# Journal file: E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.xpr}
+INFO: [Project 1-313] Project file moved from 'E:/Vivado/Tetris/Tetris/FPGA_Tetris' since last save.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Vivado/Vivado/2021.1/data/ip'.
+open_project: Time (s): cpu = 00:00:35 ; elapsed = 00:00:14 . Memory (MB): peak = 1135.246 ; gain = 0.000
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files {{E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/score_control_module.v}}] -no_script -reset -force -quiet
+remove_files  {{E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/score_control_module.v}}
+file delete -force {E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/score_control_module.v}
+WARNING: [filemgmt 20-1445] Cannot import file 'E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/PS.v' on top of itself. Importing a file from the imported source directory can cause this problem.
+WARNING: [filemgmt 20-1445] Cannot import file 'E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/DB.v' on top of itself. Importing a file from the imported source directory can cause this problem.
+add_files -norecurse {{E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/DB.v} {E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/PS.v}}
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+Command: synth_design -rtl -rtl_skip_mlo -name rtl_1
+Starting synth_design
+Using part: xc7a100tcsg324-1
+Top: tetris_game
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:05 . Memory (MB): peak = 1581.699 ; gain = 264.883
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'tetris_game' [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/tetris_game.v:1]
+INFO: [Synth 8-6157] synthesizing module 'clk_gen_module' [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/clk_gen_module.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'clk_gen_module' (1#1) [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/clk_gen_module.v:1]
+INFO: [Synth 8-6157] synthesizing module 'debouncer_module' [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/debouncer_module.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'debouncer_module' (2#1) [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/debouncer_module.v:1]
+INFO: [Synth 8-6157] synthesizing module 'tetris_control_module' [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/tetris_control_module.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'tetris_control_module' (3#1) [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/tetris_control_module.v:1]
+INFO: [Synth 8-6157] synthesizing module 'enable_border_module' [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/enable_border_module.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'enable_border_module' (4#1) [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/enable_border_module.v:1]
+INFO: [Synth 8-6157] synthesizing module 'enable_moving_square' [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/enable_moving_square_module.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'enable_moving_square' (5#1) [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/enable_moving_square_module.v:1]
+INFO: [Synth 8-6157] synthesizing module 'enable_fixed_square_module' [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/enable_fixed_square_module.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'enable_fixed_square_module' (6#1) [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/enable_fixed_square_module.v:1]
+INFO: [Synth 8-6157] synthesizing module 'enable_next_square_module' [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/enable_next_square_module.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'enable_next_square_module' (7#1) [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/enable_next_square_module.v:1]
+INFO: [Synth 8-6157] synthesizing module 'enable_hold_square_module' [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/enable_hold_square_module.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'enable_hold_square_module' (8#1) [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/enable_hold_square_module.v:1]
+INFO: [Synth 8-6157] synthesizing module 'game_sync_module' [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/game_sync_module.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'game_sync_module' (9#1) [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/game_sync_module.v:1]
+INFO: [Synth 8-6157] synthesizing module 'game_display_module' [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/game_display_module.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'game_display_module' (10#1) [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/game_display_module.v:1]
+INFO: [Synth 8-6157] synthesizing module 'game_process_module' [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/game_process_module.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'game_process_module' (11#1) [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/game_process_module.v:1]
+INFO: [Synth 8-6157] synthesizing module 'pic_over_module' [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/pic_over_module.v:1]
+INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_0' [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/.Xil/Vivado-183720-YiranPrime/realtime/blk_mem_gen_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_0' (12#1) [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/.Xil/Vivado-183720-YiranPrime/realtime/blk_mem_gen_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'pic_over_module' (13#1) [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/pic_over_module.v:1]
+INFO: [Synth 8-6157] synthesizing module 'pic_next_module' [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/pic_next_module.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'pic_next_module' (14#1) [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/pic_next_module.v:1]
+INFO: [Synth 8-6157] synthesizing module 'pic_hold_module' [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/pic_hold_module.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'pic_hold_module' (15#1) [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/pic_hold_module.v:1]
+INFO: [Synth 8-6157] synthesizing module 'pic_score_module' [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/pic_score_module.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'pic_score_module' (16#1) [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/pic_score_module.v:1]
+INFO: [Synth 8-6157] synthesizing module 'pic_num_module' [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/pic_num_module.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'pic_num_module' (17#1) [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/pic_num_module.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'tetris_game' (18#1) [E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/tetris_game.v:1]

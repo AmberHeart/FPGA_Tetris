@@ -1,0 +1,191 @@
+/*
+
+Xilinx Vivado v2021.1 (64-bit) [Major: 2021, Minor: 1]
+SW Build: 3247384 on Thu Jun 10 19:36:33 MDT 2021
+IP Build: 3246043 on Fri Jun 11 00:30:35 MDT 2021
+
+Process ID (PID): 183720
+License: Customer
+Mode: GUI Mode
+
+Current time: 	Sat Dec 03 16:31:01 CST 2022
+Time zone: 	China Standard Time (Asia/Shanghai)
+
+OS: Windows 10
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 16
+
+Screen size: 1920x1080
+Screen resolution (DPI): 123
+Available screens: 2
+Default font: family=Dialog,name=Dialog,style=plain,size=15
+Scale size: 18
+
+Java version: 	11.0.2 64-bit
+Java home: 	E:/Vivado/Vivado/2021.1/tps/win64/jre11.0.2
+Java executable: 	E:/Vivado/Vivado/2021.1/tps/win64/jre11.0.2/bin/java.exe
+Java initial memory (-Xms): 	256 MB
+Java maximum memory (-Xmx):	 3 GB
+
+
+User name: 	lenovo
+User home directory: C:/Users/lenovo
+User working directory: E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris
+User country: 	CN
+User language: 	zh
+User locale: 	zh_CN
+
+RDI_BASEROOT: E:/Vivado/Vivado
+HDI_APPROOT: E:/Vivado/Vivado/2021.1
+RDI_DATADIR: E:/Vivado/Vivado/2021.1/data
+RDI_BINDIR: E:/Vivado/Vivado/2021.1/bin
+
+Vivado preferences file: C:/Users/lenovo/AppData/Roaming/Xilinx/Vivado/2021.1/vivado.xml
+Vivado preferences directory: C:/Users/lenovo/AppData/Roaming/Xilinx/Vivado/2021.1/
+Vivado layouts directory: C:/Users/lenovo/AppData/Roaming/Xilinx/Vivado/2021.1/data/layouts
+PlanAhead jar file: 	E:/Vivado/Vivado/2021.1/lib/classes/planAhead.jar
+Vivado log file: 	E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/vivado.log
+Vivado journal file: 	E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/vivado.jou
+Engine tmp dir: 	E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/.Xil/Vivado-183720-YiranPrime
+
+Xilinx Environment Variables
+----------------------------
+XILINX: E:/Vivado/Vivado/2021.1/ids_lite/ISE
+XILINX_DSP: E:/Vivado/Vivado/2021.1/ids_lite/ISE
+XILINX_HLS: E:/Vivado/Vitis_HLS/2021.1
+XILINX_PLANAHEAD: E:/Vivado/Vivado/2021.1
+XILINX_VIVADO: E:/Vivado/Vivado/2021.1
+XILINX_VIVADO_HLS: E:/Vivado/Vivado/2021.1
+
+
+GUI allocated memory:	256 MB
+GUI max memory:		3,072 MB
+Engine allocated memory: 1,146 MB
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// Opening Vivado Project: E:\Vivado\Tetris - 副本\Tetris\FPGA_Tetris\Tetris.xpr. Version: Vivado v2021.1 
+// bz (cs):  Open Project : addNotify
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: FLOW_ADDED
+// Tcl Message: open_project {E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.xpr} 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_NEW
+// Tcl Message: open_project {E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.xpr} 
+// Tcl Message: INFO: [Project 1-313] Project file moved from 'E:/Vivado/Tetris/Tetris/FPGA_Tetris' since last save. 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Vivado/Vivado/2021.1/data/ip'. 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,146 MB. GUI used memory: 61 MB. Current time: 12/3/22, 4:31:02 PM CST
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 83 MB (+84612kb) [00:00:16]
+// [Engine Memory]: 1,146 MB (+1050491kb) [00:00:16]
+// [GUI Memory]: 104 MB (+17537kb) [00:00:18]
+// [GUI Memory]: 121 MB (+12846kb) [00:00:21]
+// WARNING: HEventQueue.dispatchEvent() is taking  8590 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1061 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1089 ms.
+// Tcl Message: open_project: Time (s): cpu = 00:00:35 ; elapsed = 00:00:14 . Memory (MB): peak = 1135.246 ; gain = 0.000 
+// Project name: Tetris; location: E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris; part: xc7a100tcsg324-1
+dismissDialog("Open Project"); // bz
+// [GUI Memory]: 130 MB (+2674kb) [00:00:28]
+// Tcl Command: 'rdi::info_commands {device::*}'
+// Tcl Command: 'rdi::info_commands {debug::*}'
+// Tcl Command: 'rdi::info_commands {*}'
+// Tcl Message: update_compile_order -fileset sources_1 
+// Elapsed time: 12 seconds
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Coefficient Files]", 3); // D
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Coefficient Files]", 3); // D
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Coefficient Files]", 3); // D
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Coefficient Files]", 3); // D
+// [GUI Memory]: 139 MB (+2624kb) [00:00:42]
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, score_control_module (score_control_module.v)]", 2, false); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, score_control_module (score_control_module.v)]", 2, false, false, false, false, true, false); // D - Popup Trigger
+// [GUI Memory]: 155 MB (+9455kb) [00:00:47]
+selectMenu(PAResourceQtoS.SrcMenu_IP_HIERARCHY, "IP Hierarchy"); // ak
+selectMenu(PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, "Hierarchy Update"); // ak
+selectMenuItem(RDIResourceCommand.RDICommands_DELETE, "Remove File from Project..."); // an
+// Run Command: RDIResourceCommand.RDICommands_DELETE
+// aE (cs): Remove Sources: addNotify
+selectCheckBox(PAResourceQtoS.RemoveSourcesDialog_ALSO_DELETE, "Also delete the project local file/directory from disk", true); // g: TRUE
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Remove Sources"); // aE
+// Tcl Message: export_ip_user_files -of_objects  [get_files {{E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/score_control_module.v}}] -no_script -reset -force -quiet 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// aE (cs): Remove Sources: addNotify
+// bz (aE):  Remove Sources : addNotify
+// Tcl Message: remove_files  {{E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/score_control_module.v}} 
+// Tcl Message: file delete -force {E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/score_control_module.v} 
+dismissDialog("Remove Sources"); // bz
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, score_control_module (score_control_module.v)]", 2, false); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, score_control_module (score_control_module.v)]", 2, false, false, false, false, true, false); // D - Popup Trigger
+// WARNING: HSwingWorker (Update Runs Swing Worker) is taking 1392 ms. Increasing delay to 3000 ms.
+// [GUI Memory]: 164 MB (+1409kb) [00:03:21]
+// Elapsed time: 190 seconds
+selectButton(PAResourceCommand.PACommandNames_ADD_SOURCES, "Sources_add_sources"); // E
+// Run Command: PAResourceCommand.PACommandNames_ADD_SOURCES
+// c (cs): Add Sources: addNotify
+selectButton("NEXT", "Next >"); // JButton
+selectButton(PAResourceQtoS.SrcChooserPanel_ADD_HDL_AND_NETLIST_FILES_TO_YOUR_PROJECT, "Add Files"); // a
+// Elapsed time: 99 seconds
+String[] filenames31467 = {"E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/DB.v", "E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/PS.v"};
+setFileChooser(filenames31467);
+selectButton("FINISH", "Finish"); // JButton
+// 'g' command handler elapsed time: 104 seconds
+dismissDialog("Add Sources"); // c
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: add_files -norecurse {{E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/DB.v} {E:/Vivado/Tetris - 副本/Tetris/FPGA_Tetris/Tetris.srcs/sources_1/imports/FPGA-tetris-master/PS.v}} 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, tetris_game (tetris_game.v)]", 1); // D
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, tetris_game (tetris_game.v)]", 1); // D
+// Elapsed time: 52 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, tetris_game (tetris_game.v)]", 1, true); // D - Node
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, tetris_game (tetris_game.v)]", 1); // D
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, tetris_game (tetris_game.v)]", 1); // D
+// Elapsed time: 59 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, DB (DB.v)]", 2, false); // D
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, RTL Analysis, Open Elaborated Design]", 12, true); // o - Node
+// Run Command: PAResourceCommand.PACommandNames_GOTO_RTL_DESIGN
+// bz (cs):  Open Elaborated Design : addNotify
+// Tcl Message: synth_design -rtl -rtl_skip_mlo -name rtl_1 
+// Tcl Message: Command: synth_design -rtl -rtl_skip_mlo -name rtl_1 Starting synth_design Using part: xc7a100tcsg324-1 Top: tetris_game 
+// TclEventType: ELABORATE_START
+selectButton(RDIResource.ProgressDialog_BACKGROUND, "Background"); // a
+// [Engine Memory]: 1,333 MB (+136036kb) [00:08:02]
+// 'dU' command handler elapsed time: 7 seconds
+// HMemoryUtils.trashcanNow. Engine heap size: 1,463 MB. GUI used memory: 96 MB. Current time: 12/3/22, 4:38:52 PM CST
+// [Engine Memory]: 1,641 MB (+252918kb) [00:08:08]

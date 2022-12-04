@@ -1,22 +1,24 @@
 module tetris_game
 ( clk, rst_n,
-  right, left, rotateR, down, 
-  hsync_out, vsync_out, red_out, green_out, blue_out
+  right,acc, left, rotateR, down, 
+  hsync_out, vsync_out, red_out, green_out, blue_out/* ,
+  vga_clk, vga_blank, vga_sync */
 );
 input clk;  
 input rst_n;
 input right;
+input acc;
 input left;
 input rotateR;
 input down;
 output hsync_out;   //行同步信号
 output vsync_out;   //场同步信号
-output red_out;    //红色信号
-output green_out;   //绿色信号
-output blue_out;    //蓝色信号
-// output vga_clk;    //VGA时钟
-// output vga_blank;   //VGA空白信号
-// output vga_sync;    //VGA同步信号
+output [3:0] red_out;    //红色信号
+output [3:0] green_out;   //绿色信号
+output [3:0] blue_out;    //蓝色信号
+/* output vga_clk;    //VGA时钟
+output vga_blank;   //VGA空白信号
+output vga_sync;    //VGA同步信号 */
 
 /**************************************************/
 
@@ -49,62 +51,104 @@ wire [7:0] cur_score_bin;
 wire pic_num_data;
 wire [13:0] pic_num_addr;
 wire game_over;
-
+wire [3:0]db;
 /**************************************************/
 
-clk_gen_module U1
-(
- .clk_in(clk),
- .clk_25MHz(clk_25MHz)
+
+/* clk_wiz_0 U1
+   (
+    // Clock out ports
+    .clk_out1(clk),     // output clk_out1////
+   // Clock in ports
+    .clk_in1(clk_25MHz));   */
+/**************************************************/
+
+clk_gen_module U1 (
+  .clk_in (clk ),
+  .clk_25MHz  ( clk_25MHz)
+);
+  
+ DB  DB_dut (
+   .clk (clk_25MHz ),
+   .nrst (rst_n ),
+   .x (right ),
+   .y  ( db[0])
+ );
+
+PS PS_dut (
+  .clk (clk_25MHz ),
+  .nrst (rst_n ),
+  .s (db[0] ),
+  .pos_edge  ( move_right)
 );
 
-/**************************************************/
 
-debouncer_module U2
-(
- .clk(clk_25MHz),
- .rst_n(rst_n),
- .key_in(right),
- .key_out(move_right)
-);  
-
-/**************************************************/
-
-debouncer_module U3
-(
- .clk(clk_25MHz),
- .rst_n(rst_n),
- .key_in(left),
- .key_out(move_left)
+DB DB_0 (
+  .clk (clk_25MHz ),
+  .nrst (rst_n ),
+  .x (left ),
+  .y  ( db[1])
 );
 
-/**************************************************/
-
-debouncer_module U4
-(
- .clk(clk_25MHz),
- .rst_n(rst_n),
- .key_in(rotateR),
- .key_out(rotate_r)
+PS PS_0 (
+  .clk (clk_25MHz ),
+  .nrst (rst_n ),
+  .s (db[1] ),
+  .pos_edge  ( move_left)
 );
 
-/**************************************************/
 
-debouncer_module U5
-(
- .clk(clk_25MHz),
- .rst_n(rst_n),
- .key_in(down),
- .key_out(change)
+DB DB_1 (
+  .clk (clk_25MHz ),
+  .nrst (rst_n ),
+  .x (rotateR ),
+  .y  ( db[2])
 );
 
-/**************************************************/
+PS PS_1 (
+  .clk (clk_25MHz ),
+  .nrst (rst_n ),
+  .s (db[2] ),
+  .pos_edge  (rotate_r)
+);
+
+DB DB_3 (
+  .clk (clk_25MHz ),
+  .nrst (rst_n ),
+  .x (down ),
+  .y  ( db[3])
+);
+
+PS PS_3 (
+  .clk (clk_25MHz ),
+  .nrst (rst_n ),
+  .s (db[3] ),
+  .pos_edge  ( change)
+);
+
+/* Debounce_s 
+ Debounce_s_dut (
+   .x ({right,left,rotateR,down} ),
+   .rstn (rst_n ),
+   .clk (clk ),
+   .y  ( db)
+ );
+
+PS_s 
+ PS_s_dut (
+   .clk (clk ),
+   .rstn (rstn ),
+   .pulse (db ),
+   .pos_edge  ( {move_right,move_left,rotate_r,change})
+ ); */
+
 
 tetris_control_module U6
 (
  .clk(clk_25MHz),
  .rst_n(rst_n),
  .move_right(move_right),
+ .acc(acc),
  .move_left(move_left),
  .rotate_r(rotate_r),
  .change(change),
@@ -182,19 +226,19 @@ enable_hold_square_module U11
 
 /**************************************************/
 
-score_control_module U12
-(
- .clk(clk_25MHz),
- .rst_n(rst_n),
- .cur_score_bin(cur_score_bin),
- .col_addr_sig(col_addr_sig),
- .row_addr_sig(row_addr_sig),
- .pic_num_addr(pic_num_addr)
-);
+// score_control_module U12
+// (
+//  .clk(clk_25MHz),
+//  .rst_n(rst_n),
+//  .cur_score_bin(cur_score_bin),
+//  .col_addr_sig(col_addr_sig),
+//  .row_addr_sig(row_addr_sig),
+//  .pic_num_addr(pic_num_addr)
+// );
 
 /**************************************************/
 
-game_sync_module U13
+game_sync_module U13 
 (
  .clk(clk_25MHz),
  .rst_n(rst_n),
@@ -202,8 +246,7 @@ game_sync_module U13
  .col_addr_sig(col_addr_sig),
  .row_addr_sig(row_addr_sig),
  .hsync_out(hsync_out),
- .vsync_out(vsync_out),
- .pic_addr(pic_addr)
+ .vsync_out(vsync_out)
 );
 
 /**************************************************/
@@ -214,16 +257,18 @@ game_display_module U14
  .rst_n(rst_n),
  .sync_ready_sig(sync_ready_sig),
  .ingame_sig(ingame_sig),
+.col_addr_sig(col_addr_sig),
+ .row_addr_sig(row_addr_sig),
  .enable_border(enable_border),
  .enable_moving_square(enable_moving_square),
  .enable_fixed_square(enable_fixed_square),
  .enable_next_square(enable_next_square),
  .enable_hold_square(enable_hold_square),
- .pic_over_data(0),
- .pic_next_data(0),
- .pic_hold_data(0),
- .pic_score_data(0),
- .pic_num_data(0),
+ .pic_over_data(pic_over_data),
+ .pic_next_data(pic_next_data),
+ .pic_hold_data(pic_hold_data),
+ .pic_score_data(pic_score_data),
+ .pic_num_data(pic_num_data),
  .red_out(red_out),
  .green_out(green_out),
  .blue_out(blue_out)
@@ -241,48 +286,55 @@ game_process_module U15
 
 /**************************************************/
 
-// pic_over_module U16
-// (
-//  .clka(clk_25MHz),
-//  .addra(pic_addr),
-//  .douta(pic_over_data)
-// ); 
+pic_over_module U16
+(
+ .clka(clk),
+ .col_addr_sig(col_addr_sig),
+ .row_addr_sig(row_addr_sig),
+ .douta(pic_over_data)
+); 
  
-// /**************************************************/ 
+/**************************************************/ 
 
-// pic_next_module U17
-// (
-//  .clka(clk_25MHz),
-//  .addra(pic_addr),
-//  .douta(pic_next_data)
-// ); 
+pic_next_module U17
+(
+ .clka(clk),
+ .col_addr_sig(col_addr_sig),
+ .row_addr_sig(row_addr_sig),
+ .douta(pic_next_data)
+); 
 
-// /**************************************************/ 
+/**************************************************/ 
 
-// pic_hold_module U18
-// (
-//  .clka(clk_25MHz),
-//  .addra(pic_addr),
-//  .douta(pic_hold_data)
-// ); 
+pic_hold_module U18
+(
+ .clka(clk),
+ .col_addr_sig(col_addr_sig),
+ .row_addr_sig(row_addr_sig),
+ .douta(pic_hold_data)
+); 
 
-// /**************************************************/
+/**************************************************/
 
-// pic_score_module U19
-// (
-//  .clka(clk_25MHz),
-//  .addra(pic_addr),
-//  .douta(pic_score_data)
-// ); 
+pic_score_module U19
+(
+ .clka(clk),
+ .col_addr_sig(col_addr_sig),
+ .row_addr_sig(row_addr_sig),
+ .douta(pic_score_data)
+); 
 
-// /**************************************************/
+/**************************************************/
 
-// pic_num_module U20
-// (
-//  .clka(clk_25MHz),
-//  .addra(pic_num_addr),
-//  .douta(pic_num_data)
-// ); 
+pic_num_module U20
+(
+ .clka(clk),
+ .rst_n(rst_n),
+  .cur_score_bin(cur_score_bin),
+ .col_addr_sig(col_addr_sig),
+ .row_addr_sig(row_addr_sig),
+ .douta(pic_num_data)
+); 
 
 /**************************************************/
 
